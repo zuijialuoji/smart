@@ -8,13 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../../smart/pom.xml</relativePath><!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.smart</groupId>
 	<artifactId>smart-comm</artifactId>
-	<packaging>jar</packaging>
-	<name>smart-comm</name>
-	<description>smart-comm</description>
-
-
 	<dependencies>
 
 		<dependency>
