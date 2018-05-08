@@ -3,7 +3,8 @@ package com.smart.core.service.Impl;
 import com.smart.core.dao.Dao;
 import com.smart.core.domin.PersistentObject;
 import com.smart.core.service.Service;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.java.Log;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Map;
  * @commons.core.service.impl
  * @Description:  Service基类，实现了数据的CRUD
  */
-
+@Log
 public  class ServiceImpl<DAO extends Dao<T, ID>, T extends PersistentObject, ID extends Serializable>
         implements Service<T, ID> {
 
@@ -39,8 +40,13 @@ public  class ServiceImpl<DAO extends Dao<T, ID>, T extends PersistentObject, ID
     }
 
     @Override
-    public void deleteById(ID id) {
+    public int remove(T t) {
+        return 0;
+    }
 
+    @Override
+    public int batchRemove(Long[] ids) {
+        return 0;
     }
 
     @Override
@@ -48,8 +54,5 @@ public  class ServiceImpl<DAO extends Dao<T, ID>, T extends PersistentObject, ID
         return null;
     }
 
-    @Override
-    public List<T> queryAll() {
-        return null;
-    }
+
 }

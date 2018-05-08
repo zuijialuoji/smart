@@ -1,8 +1,11 @@
 package com.smart.controller;
 
 
-import lombok.extern.log4j.Log4j;
+import lombok.extern.java.Log;
+import org.springframework.web.bind.annotation.RestController;
 
-@Log4j
+
+@Log
+@RestController
 public class RoleController {
 }

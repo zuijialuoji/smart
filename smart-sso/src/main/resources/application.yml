@@ -5,9 +5,6 @@ server:
 #        min-spare-threads: 30
   port: 80
 #    uri-encoding: utf-8
-security:
-  basic:
-    enabled: false
 spring:
   thymeleaf:
     mode: LEGACYHTML5

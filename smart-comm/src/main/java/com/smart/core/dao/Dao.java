@@ -18,7 +18,7 @@ public interface Dao<T , ID extends Serializable> {
     T get(ID pk);
     int insert(T t);
     int update(T t);
-    int deleteById(Collection<ID> idList);
+    int remove(T t);
+    int batchRemove(Long[] ids);
     List<T> condition(Map map);
-    List<T> queryAll();
 }

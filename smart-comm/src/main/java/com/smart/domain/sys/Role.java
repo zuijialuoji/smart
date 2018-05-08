@@ -1,7 +1,10 @@
 package com.smart.domain.sys;
 
 import com.smart.core.domin.PersistentObject;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -12,6 +15,9 @@ import java.util.List;
  * @Description:
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
 public class Role extends PersistentObject{
 
     private String roleName;
@@ -22,17 +28,5 @@ public class Role extends PersistentObject{
     private Timestamp gmtModified;
     private List<Long> menuIds;
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "Id=" + getId() +
-                ", roleName='" + roleName + '\'' +
-                ", roleSign='" + roleSign + '\'' +
-                ", remark='" + remark + '\'' +
-                ", userIdCreate=" + userIdCreate +
-                ", gmtCreate=" + gmtCreate +
-                ", gmtModified=" + gmtModified +
-                ", menuIds=" + menuIds +
-                '}';
-    }
+
 }

@@ -1,7 +1,10 @@
 package com.smart.domain.sys;
 
 import com.smart.core.domin.PersistentObject;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -11,6 +14,9 @@ import java.util.Date;
  * @Description:
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
 public class App extends PersistentObject {
     /** 名称 */
     private String name;

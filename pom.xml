@@ -19,6 +19,9 @@
 	<modules>
 		<module>smart-comm</module>
 		<module>smart-sso</module>
+		<module>smart-customer</module>
+		<module>smart-eureka</module>
+		<module>smart-company</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,6 +32,8 @@
 		<mysql-connector-java>6.0.6</mysql-connector-java>
 		<lombok>1.16.20</lombok>
 		<javax.servlet-api>4.0.0</javax.servlet-api>
+		<spring-beans>5.0.5.RELEASE</spring-beans>
+		<druid>1.0.28</druid>
 	</properties>
 
     <dependencyManagement>
@@ -65,11 +70,33 @@
 				  <version>${spring-boot-version}</version>
 			  </dependency>
 			  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-starter-thymeleaf</artifactId>
+				  <version>${spring-boot-version}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-starter-cache</artifactId>
+				  <version>${spring-boot-version}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-devtools</artifactId>
+				  <optional>true</optional>
+				  <version>${spring-boot-version}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.springframework</groupId>
+				  <artifactId>spring-beans</artifactId>
+				  <version>${spring-beans}</version>
+			  </dependency>
+			  <dependency>
 				  <groupId>javax.servlet</groupId>
 				  <artifactId>javax.servlet-api</artifactId>
 				  <version>${javax.servlet-api}</version>
 				  <scope>provided</scope>
 			  </dependency>
+
 			  <dependency>
 				  <groupId>mysql</groupId>
 				  <artifactId>mysql-connector-java</artifactId>
@@ -87,7 +114,13 @@
 			  <artifactId>mybatis-spring-boot-starter</artifactId>
 			  <version>${mybatis-spring-boot-starter}</version>
 		  </dependency>
+			  <dependency>
+				  <groupId>com.alibaba</groupId>
+				  <artifactId>druid</artifactId>
+				  <version>${druid}</version>
+			  </dependency>
 	  </dependencies>
+
 	</dependencyManagement>
 
 	<build>

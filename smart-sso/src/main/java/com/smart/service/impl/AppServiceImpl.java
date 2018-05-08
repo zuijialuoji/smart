@@ -1,19 +1,25 @@
 package com.smart.service.impl;
 
 import com.smart.core.service.Impl.ServiceImpl;
-import com.smart.core.service.Service;
-import com.smart.dao.AppDao;
+
+import com.smart.dao.sso.AppDao;
 import com.smart.domain.sys.App;
 import com.smart.service.AppService;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Log4j
+@Log
+@Service
 public class AppServiceImpl extends ServiceImpl<AppDao, App, Long> implements AppService {
 
-
+    @Autowired
+    public void setDao(AppDao dao) {
+        this.dao = dao;
+    }
 
     @Override
     public App get(Long pk) {
@@ -35,10 +41,7 @@ public class AppServiceImpl extends ServiceImpl<AppDao, App, Long> implements Ap
         return null;
     }
 
-    @Override
-    public List<App> queryAll() {
-        return null;
-    }
+
 
 
     public void deleteById(Integer integer) {

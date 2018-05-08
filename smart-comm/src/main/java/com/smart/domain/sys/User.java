@@ -1,7 +1,10 @@
 package com.smart.domain.sys;
 
 import com.smart.core.domin.PersistentObject;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -13,6 +16,9 @@ import java.util.List;
  * @Description:
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
 public class User  extends PersistentObject {
     // 用户名
     private String username;
@@ -57,29 +63,5 @@ public class User  extends PersistentObject {
 
 
 
-    public String toString() {
-        return "UserDO{" +
-                "id=" + getId() +
-                ", username='" + username + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", deptId=" + deptId +
-                ", deptName='" + deptName + '\'' +
-                ", email='" + email + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", status=" + status +
-                ", userIdCreate=" + userIdCreate +
-                ", gmtCreate=" + gmtCreate +
-                ", gmtModified=" + gmtModified +
-                ", roleIds=" + roleIds +
-                ", sex=" + sex +
-                ", birth=" + birth +
-                ", picId=" + picId +
-                ", liveAddress='" + liveAddress + '\'' +
-                ", hobby='" + hobby + '\'' +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", district='" + district + '\'' +
-                '}';
-    }
+
 }
