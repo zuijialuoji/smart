@@ -3,18 +3,41 @@
 
 <mapper namespace="com.smart.dao.sso.MenuDao">
 
+	<resultMap id="Menu" type="com.smart.domain.sys.Menu" >
+		<result column="id" property="id" />
+		<result column="app_id" property="appId" />
+		<result column="parent_id" property="parentId" />
+		<result column="name" property="name" />
+		<result column="url" property="url" />
+		<result column="type" property="type" />
+		<result column="icon" property="icon" />
+		<result column="order_num" property="orderNum" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		`id`,
+		`app_id`,
+		`parent_id`,
+		`name`,
+		`url`,
+		`type`,
+		`icon`,
+		`order_num`,
+		`gmt_create`,
+		`gmt_modified`
+	</sql>
 	<select id="get" resultType="com.smart.domain.sys.Menu">
-		select
-		`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
-		from sys_menu where menu_id = #{value}
+		select *
+		from menu where id = #{id}
 	</select>
 
-	<select id="condition" resultType="com.smart.domain.sys.Menu">
+	<select id="condition" parameterType="java.util.HashMap" resultType="com.smart.domain.sys.Menu">
 		select
-		`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
-		from sys_menu
-		<where>
-			<if test="menuId != null and menuId != ''"> and menu_id = #{menuId} </if>
+		`id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
+		from menu
+		     WHERE 1 = 1
 			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
 			<if test="name != null and name != ''"> and name = #{name} </if>
 			<if test="url != null and url != ''"> and url = #{url} </if>
@@ -24,13 +47,12 @@
 			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
 			<if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 			<if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
-		</where>
 		<choose>
 			<when test="sort != null and sort.trim() != ''">
 				order by ${sort} ${order}
 			</when>
 			<otherwise>
-				order by menu_id desc
+				order by id desc
 			</otherwise>
 		</choose>
 		<if test="offset != null and limit != null">
@@ -40,7 +62,7 @@
 
 	<insert id="insert" parameterType="com.smart.domain.sys.Menu"
 		useGeneratedKeys="true" keyProperty="menuId">
-		insert into sys_menu
+		insert into menu
 		(
 		`parent_id`,
 		`name`,
@@ -67,7 +89,7 @@
 	</insert>
 
 	<update id="update" parameterType="com.smart.domain.sys.Menu">
-		update sys_menu
+		update menu
 		<set>
 			<if test="parentId != null">`parent_id` = #{parentId}, </if>
 			<if test="name != null">`name` = #{name}, </if>
@@ -79,29 +101,29 @@
 			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
 			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
 		</set>
-		where menu_id = #{menuId}
+		where id = #{Id}
 	</update>
 
 	<delete id="remove">
-		delete from sys_menu where menu_id = #{value}
+		delete from menu where id = #{value}
 	</delete>
 
 	<delete id="batchRemove">
-		delete from sys_menu where menu_id in
+		delete from menu where id in
 		<foreach item="menuId" collection="array" open="(" separator=","
 			close=")">
-			#{menuId}
+			#{Id}
 		</foreach>
 	</delete>
 
 	<select id="listMenuByUserId" resultType="com.smart.domain.sys.Menu">
 		select distinct
-		m.menu_id , parent_id, name, url,
+		m.id , parent_id, name, url,
 		perms,`type`,icon,order_num,gmt_create, gmt_modified
-		from sys_menu m
+		from menu m
 		left
-		join sys_role_menu rm on m.menu_id = rm.menu_id left join
-		sys_user_role ur
+		join role_menu rm on m.id = rm.menu_id left join
+		user_role ur
 		on rm.role_id =ur.role_id where ur.user_id = #{id}
 		and
 		m.type in(0,1)
@@ -111,7 +133,7 @@
 
 	<select id="listUserPerms" resultType="string">
 		select distinct m.perms
-		from sys_menu m left join
+		from menu m left join
 		sys_role_menu rm on m.menu_id = rm.menu_id
 		left join sys_user_role ur
 		on rm.role_id = ur.role_id where ur.user_id

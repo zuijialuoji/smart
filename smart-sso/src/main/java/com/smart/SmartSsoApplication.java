@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableTransactionManagement
-@ServletComponentScan
+@ServletComponentScan("com.smart.*")
 @MapperScan("com.smart.dao.*.dao")
 public class SmartSsoApplication {
 

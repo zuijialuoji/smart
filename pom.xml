@@ -22,7 +22,8 @@
 		<module>smart-customer</module>
 		<module>smart-eureka</module>
 		<module>smart-company</module>
-	</modules>
+        <module>smart-quartz</module>
+    </modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -35,6 +36,8 @@
 		<javax.annotation-api>1.2</javax.annotation-api>
 		<spring-beans>5.0.5.RELEASE</spring-beans>
 		<druid>1.0.28</druid>
+		<fastjson>1.2.31</fastjson>
+		<mybatis>3.4.4</mybatis>
 	</properties>
 
     <dependencyManagement>
@@ -120,9 +123,19 @@
 			  <version>${mybatis-spring-boot-starter}</version>
 		  </dependency>
 			  <dependency>
+				  <groupId>org.mybatis</groupId>
+				  <artifactId>mybatis</artifactId>
+				  <version>${mybatis}</version>
+			  </dependency>
+			  <dependency>
 				  <groupId>com.alibaba</groupId>
 				  <artifactId>druid</artifactId>
 				  <version>${druid}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>com.alibaba</groupId>
+				  <artifactId>fastjson</artifactId>
+				  <version>${fastjson}</version>
 			  </dependency>
 	  </dependencies>
 

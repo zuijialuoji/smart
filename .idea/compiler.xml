@@ -10,6 +10,7 @@
         <module name="smart-company" />
         <module name="smart-customer" />
         <module name="smart-eureka" />
+        <module name="smart-quartz" />
         <module name="smart-sso" />
         <module name="smartcustomer" />
       </profile>
@@ -20,6 +21,7 @@
       <module name="smart-company" target="1.8" />
       <module name="smart-customer" target="1.8" />
       <module name="smart-eureka" target="1.8" />
+      <module name="smart-quartz" target="1.8" />
       <module name="smart-sso" target="1.8" />
       <module name="smartcustomer" target="1.8" />
     </bytecodeTargetLevel>

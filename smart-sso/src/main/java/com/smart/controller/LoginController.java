@@ -1,7 +1,11 @@
 package com.smart.controller;
 
+import com.smart.domain.sys.Menu;
+import com.smart.service.MenuService;
+import com.smart.utils.Tree;
 import lombok.extern.java.Log;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Log
-@RestController
+@Controller
 public class LoginController {
+
+
+    @Autowired
+    MenuService menuService;
+
 
     @GetMapping({ "/", "" })
     String welcome(Model model) {
@@ -20,7 +29,9 @@ public class LoginController {
     }
     @GetMapping({ "/index" })
     String index(Model model) {
-
+        long id =1;
+        List<Tree<Menu>> menus = menuService.listMenuTree(id);
+       model.addAttribute("menus", menus);
         return "index_v1";
     }
     @GetMapping("/login")

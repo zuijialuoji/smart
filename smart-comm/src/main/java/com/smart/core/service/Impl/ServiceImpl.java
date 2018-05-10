@@ -26,32 +26,34 @@ public  class ServiceImpl<DAO extends Dao<T, ID>, T extends PersistentObject, ID
 
     @Override
     public T get(ID pk) {
-        return null;
+        return dao.get(pk);
     }
 
     @Override
     public int save(T t) {
-        return 0;
+        return dao.insert(t);
     }
 
     @Override
     public int update(T t) {
-        return 0;
+
+        return dao.update(t);
     }
 
     @Override
     public int remove(T t) {
-        return 0;
+
+        return dao.remove(t);
     }
 
     @Override
     public int batchRemove(Long[] ids) {
-        return 0;
+        return dao.batchRemove(ids);
     }
 
     @Override
     public List<T> condition(Map map) {
-        return null;
+        return dao.condition(map);
     }
 
 

@@ -3,13 +3,13 @@
 
 <mapper namespace="com.smart.dao.sso.RoleDao">
 
-	<select id="get" resultType="com.smart.domain.sys..Role">
+	<select id="get" resultType="com.smart.domain.sys.Role">
 		select
 		`role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified`
 		from sys_role where role_id = #{value}
 	</select>
 
-	<select id="condition" resultType="com.smart.domain.sys..Role">
+	<select id="condition" resultType="com.smart.domain.sys.Role">
 		select
 		`role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified`
 		from sys_role
@@ -36,7 +36,7 @@
 	</select>
 
 
-	<insert id="insert" parameterType="com.smart.domain.sys..Role"
+	<insert id="insert" parameterType="com.smart.domain.sys.Role"
 		useGeneratedKeys="true" keyProperty="roleId">
 		insert into sys_role
 		(
@@ -58,7 +58,7 @@
 		)
 	</insert>
 
-	<update id="update" parameterType="com.smart.domain.sys..Role">
+	<update id="update" parameterType="com.smart.domain.sys.Role">
 		update sys_role
 		<set>
 			<if test="roleName != null">`role_name` = #{roleName}, </if>
