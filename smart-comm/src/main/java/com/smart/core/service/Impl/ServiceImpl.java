@@ -41,9 +41,9 @@ public  class ServiceImpl<DAO extends Dao<T, ID>, T extends PersistentObject, ID
     }
 
     @Override
-    public int remove(T t) {
+    public int remove(ID pk) {
 
-        return dao.remove(t);
+        return dao.remove(pk);
     }
 
     @Override
