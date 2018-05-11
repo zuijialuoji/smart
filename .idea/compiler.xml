@@ -6,12 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="smart-comm" />
-        <module name="smart-company" />
-        <module name="smart-customer" />
-        <module name="smart-eureka" />
-        <module name="smart-quartz" />
-        <module name="smart-sso" />
         <module name="smartcustomer" />
       </profile>
     </annotationProcessing>
