@@ -20,29 +20,6 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User, Long> implements
         this.dao = dao;
     }
 
-    @Override
-    public User get(Long pk) {
-        return null;
-    }
-
-    @Override
-    public int save(User user) {
-        return 0;
-    }
-
-    @Override
-    public int update(User user) {
-        return 0;
-    }
-
-    @Override
-    public List<User> condition(Map map) {
-        return null;
-    }
-
-
-
-
     public void deleteById(Integer integer) {
 
     }

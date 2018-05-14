@@ -17,6 +17,6 @@ public interface Service <T extends PersistentObject,ID extends Serializable>{
     int update(T t);
     int remove(ID pk);
     int batchRemove(Long[] ids);
-    List<T> condition(Map map);
+    List<T> condition(Map<String, Object>  map);
 
 }

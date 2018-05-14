@@ -1,11 +1,10 @@
-package com.smart.comm.mybatis;
+package com.smart.config;
 
 
-
-import com.smart.comm.page.Pagination;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.plugin.Invocation;
+
 import java.util.Properties;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +25,7 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -34,15 +34,16 @@ import org.springframework.stereotype.Component;
  *
  * @Description:
  */
+
+
+
 @Component
 @Intercepts({ @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class ,Integer.class }),
         @Signature(method = "query", type = Executor.class, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class }) })
 public class MybatisSpringPageInterceptor  implements Interceptor {
 
-    private final static Logger logger = LoggerFactory.getLogger(MybatisSpringPageInterceptor.class);
-
     private final ThreadLocal<Pagination<?>> localPagination = new ThreadLocal<Pagination<?>>();
-
+    private final static Logger log = LoggerFactory.getLogger(MybatisSpringPageInterceptor.class);
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         if (invocation.getTarget() instanceof StatementHandler) {
@@ -72,15 +73,14 @@ public class MybatisSpringPageInterceptor  implements Interceptor {
             BoundSql boundSql = (BoundSql) metaStatementHandler.getValue("delegate.boundSql");
             // 分页参数作为参数对象parameterObject的一个属性
             String sql = boundSql.getSql();
-
-            Connection connection = (Connection) invocation.getArgs()[0];
-            // 重设分页参数里的总页数等
-            setPageParameter(sql, connection, mappedStatement, boundSql, pagination);
-            // 将执行权交给下一个拦截器
             // 重写sql
             String pageSql = buildPageSql(sql, pagination);
             // 重写分页sql
             metaStatementHandler.setValue("delegate.boundSql.sql", pageSql);
+            Connection connection = (Connection) invocation.getArgs()[0];
+            // 重设分页参数里的总页数等
+            setPageParameter(sql, connection, mappedStatement, boundSql, pagination);
+            // 将执行权交给下一个拦截器
             return invocation.proceed();
         }
         else if (invocation.getTarget() instanceof ResultSetHandler) {
@@ -89,7 +89,7 @@ public class MybatisSpringPageInterceptor  implements Interceptor {
                 return invocation.proceed();
             try {
                 Object result = invocation.proceed();
-                pagination.setRows((List) result);
+                pagination.setList((List) result);
                 return result;
             }
             finally {
@@ -133,23 +133,12 @@ public class MybatisSpringPageInterceptor  implements Interceptor {
     public void setProperties(Properties properties) {
 
     }
-
-
     public String buildPageSql(String sql, Pagination<?> pagination) {
-
         StringBuilder pageSql = new StringBuilder(sql);
-        long lastPageRows = pagination.getTotal() - (pagination.getPageNo() * pagination.getPageSize());
-        if( lastPageRows >= pagination.getPageSize() ){
-            pageSql.insert(7, " skip "+ (pagination.getPageNo() * pagination.getPageSize()) +" first "+ pagination.getPageSize()+" ");
-        }else if(lastPageRows==0){
-            pageSql.insert(7, " skip "+ (pagination.getPageNo() * pagination.getPageSize()));
-        }else{
-            pageSql.insert(7, " skip "+ (pagination.getPageNo() * pagination.getPageSize()) +" first "+lastPageRows+" ");
-        }
+       /* pageSql.append(" LIMIT " + (pagination.getPageNo() - 1) * pagination.getPageSize() + "," + pagination.getPageSize());*/
+        pageSql.append(" LIMIT " + (pagination.getOffset() + ", " + pagination.getLimit()));
         return pageSql.toString();
     }
-
-
     /**
      * 获取总记录数
      *
@@ -175,28 +164,26 @@ public class MybatisSpringPageInterceptor  implements Interceptor {
             if (rs.next()) {
                 rowCount = rs.getInt(1);
             }
-            pagination.setTotal(rowCount);
+            pagination.setRowCount(rowCount);
         }
         catch (SQLException e) {
-            logger.error("Ignore this exception", e);
+            log.error("Ignore this exception", e);
         }
         finally {
             try {
                 rs.close();
             }
             catch (SQLException e) {
-                logger.error("Ignore this exception", e);
+                log.error("Ignore this exception", e);
             }
             try {
                 countStmt.close();
             }
             catch (SQLException e) {
-                logger.error("Ignore this exception", e);
+                log.error("Ignore this exception", e);
             }
         }
     }
-
-
 
     /**
      * 代入参数值

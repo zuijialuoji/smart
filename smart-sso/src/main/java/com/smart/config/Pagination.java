@@ -1,15 +1,24 @@
-package com.smart.core.domin;
+package com.smart.config;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Created by 崔 on 2018/4/28.
- * 分页基类
+ * Created by 崔宗鲁 on 2018/5/4.
  *
+ * @Description:
  */
-public class PaginationSupport implements Serializable {
+public class Pagination<T> extends LinkedHashMap<String, Object> implements Serializable {
 
-    private static final long serialVersionUID = 2234283310680151858L;
+    private static final long serialVersionUID = 7002501955628078021L;
+    //从第几条开始
+    private int offset;
+    // 每页条数
+    private int limit;
+
+    /*----------------下面不同用法-----------------*/
     /** 默认显示页码数 */
     public static final int DEFAULT_OFFSET_SIZE = 3;
     /** 默认每页行数 */
@@ -23,14 +32,39 @@ public class PaginationSupport implements Serializable {
     private long rowCount;
     /** 当前页码 */
     private int pageNo = 1;
-
-    public PaginationSupport() {
+    /** 当前页的数据 */
+    private List<T> list;
+    public Pagination() {
     }
 
-    public PaginationSupport(int pageNo, int pageSize) {
+    public Pagination(int pageNo, int pageSize) {
         this.pageNo = pageNo;
         this.pageSize = pageSize;
     }
+    public Pagination(Map<String, Object> params) {
+        this.putAll(params);
+        // 分页参数
+        this.offset = Integer.parseInt(params.get("offset").toString());
+        this.limit = Integer.parseInt(params.get("limit").toString());
+    }
+    /**
+     * 获得分页内容
+     *
+     * @return
+     */
+    public List<T> getList() {
+        return list;
+    }
+
+    /**
+     * 设置分页内容
+     *
+     * @param list
+     */
+    public void setList(List<T> list) {
+        this.list = list;
+    }
+
 
     public int getOffsetSize() {
         return offsetSize;
@@ -81,5 +115,21 @@ public class PaginationSupport implements Serializable {
             return rowCount / pageSize;
         else
             return (rowCount / pageSize) + 1;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.put("offset", offset);
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
     }
 }

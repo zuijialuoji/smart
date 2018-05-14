@@ -1,4 +1,4 @@
-package com.smart.comm.page;
+package com.smart.config;
 
 import java.io.Serializable;
 
@@ -8,7 +8,6 @@ import java.io.Serializable;
  * @Description:
  */
 public class PaginationSupport implements Serializable {
-
     private static final long serialVersionUID = 2234283310680151858L;
     /** 默认显示页码数 */
     public static final int DEFAULT_OFFSET_SIZE = 3;
@@ -20,7 +19,7 @@ public class PaginationSupport implements Serializable {
     /** 每页行数 */
     private int pageSize = DEFAULT_PAGE_SIZE;
     /** 记录总数 */
-    private long total;
+    private long rowCount;
     /** 当前页码 */
     private int pageNo = 1;
 
@@ -48,12 +47,12 @@ public class PaginationSupport implements Serializable {
         this.pageSize = pageSize;
     }
 
-    public long getTotal() {
-        return total;
+    public long getRowCount() {
+        return rowCount;
     }
 
-    public void setTotal(long total) {
-        this.total = total;
+    public void setRowCount(long rowCount) {
+        this.rowCount = rowCount;
     }
 
     public int getPageNo() {
@@ -77,9 +76,9 @@ public class PaginationSupport implements Serializable {
      * 获取总页数
      */
     public long getPageCount() {
-        if (total % pageSize == 0)
-            return total / pageSize;
+        if (rowCount % pageSize == 0)
+            return rowCount / pageSize;
         else
-            return (total / pageSize) + 1;
+            return (rowCount / pageSize) + 1;
     }
 }

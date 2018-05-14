@@ -52,7 +52,7 @@ public  class ServiceImpl<DAO extends Dao<T, ID>, T extends PersistentObject, ID
     }
 
     @Override
-    public List<T> condition(Map map) {
+    public List<T> condition(Map<String, Object>  map) {
         return dao.condition(map);
     }
 
