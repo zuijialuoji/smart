@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/smart.iml" filepath="$PROJECT_DIR$/smart.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-comm/smart-comm.iml" filepath="$PROJECT_DIR$/smart-comm/smart-comm.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-company/smart-company.iml" filepath="$PROJECT_DIR$/smart-company/smart-company.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smart-customer/smart-customer.iml" filepath="$PROJECT_DIR$/smart-customer/smart-customer.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-eureka/smart-eureka.iml" filepath="$PROJECT_DIR$/smart-eureka/smart-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-quartz/smart-quartz.iml" filepath="$PROJECT_DIR$/smart-quartz/smart-quartz.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-sso/smart-sso.iml" filepath="$PROJECT_DIR$/smart-sso/smart-sso.iml" />

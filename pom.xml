@@ -27,21 +27,24 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<mybatis-spring-boot-starter>1.3.2</mybatis-spring-boot-starter>
 		<spring-boot-version>2.0.1.RELEASE</spring-boot-version>
-		<mysql-connector-java>6.0.6</mysql-connector-java>
+		<spring-beans>5.0.5.RELEASE</spring-beans>
 		<lombok>1.16.20</lombok>
+		<java.version>1.8</java.version>
 		<javax.servlet-api>4.0.0</javax.servlet-api>
 		<javax.annotation-api>1.2</javax.annotation-api>
-		<spring-beans>5.0.5.RELEASE</spring-beans>
 		<druid>1.0.28</druid>
 		<fastjson>1.2.31</fastjson>
 		<mybatis>3.4.4</mybatis>
+		<mybatis-spring-boot-starter>1.3.2</mybatis-spring-boot-starter>
+		<mybatis-plus-boot-starter.version>1.0.5</mybatis-plus-boot-starter.version>
+		<mysql-connector-java>6.0.6</mysql-connector-java>
+		<mybatisplus.version>2.1.8</mybatisplus.version>
 	</properties>
 
     <dependencyManagement>
 
+		<!--———————————————————————————spring ———————————————————————————————————-->
 		  <dependencies>
 			  <dependency>
 				  <groupId>org.springframework.boot</groupId>
@@ -90,33 +93,19 @@
 				  <version>${spring-boot-version}</version>
 			  </dependency>
 			  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-starter-web</artifactId>
+				  <version>${spring-boot-version}</version>
+			  </dependency>
+			  <dependency>
 				  <groupId>org.springframework</groupId>
 				  <artifactId>spring-beans</artifactId>
 				  <version>${spring-beans}</version>
 			  </dependency>
-			  <dependency>
-				  <groupId>javax.servlet</groupId>
-				  <artifactId>javax.servlet-api</artifactId>
-				  <version>${javax.servlet-api}</version>
-			  </dependency>
-			  <dependency>
-				  <groupId>javax.annotation</groupId>
-				  <artifactId>javax.annotation-api</artifactId>
-				  <version>${javax.annotation-api}</version>
-			  </dependency>
 
-			  <dependency>
-				  <groupId>mysql</groupId>
-				  <artifactId>mysql-connector-java</artifactId>
-				  <scope>runtime</scope>
-				  <version>${mysql-connector-java}</version>
-			  </dependency>
-			  <dependency>
-				  <groupId>org.projectlombok</groupId>
-				  <artifactId>lombok</artifactId>
-				  <optional>true</optional>
-				  <version>${lombok}</version>
-			  </dependency>
+
+
+			  <!--————————————————————————————mybatis——————————————————————————————————————-->
 		  <dependency>
 			  <groupId>org.mybatis.spring.boot</groupId>
 			  <artifactId>mybatis-spring-boot-starter</artifactId>
@@ -128,10 +117,59 @@
 				  <version>${mybatis}</version>
 			  </dependency>
 			  <dependency>
+				  <groupId>com.baomidou</groupId>
+				  <artifactId>mybatis-plus</artifactId>
+				  <version>${mybatisplus.version}</version>
+			  </dependency>
+			  <!-- mybatis-plus begin -->
+			  <dependency>
+				  <groupId>com.baomidou</groupId>
+				  <artifactId>mybatisplus-spring-boot-starter</artifactId>
+				  <version>${mybatis-plus-boot-starter.version}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>com.baomidou</groupId>
+				  <artifactId>mybatis-plus</artifactId>
+				  <version>${mybatisplus.version}</version>
+			  </dependency>
+			  <!-- mybatis-plus end -->
+
+
+			  <!--—————————————————————————————数据连接—————————————————————————————————————————————-->
+			  <dependency>
 				  <groupId>com.alibaba</groupId>
 				  <artifactId>druid</artifactId>
 				  <version>${druid}</version>
 			  </dependency>
+
+
+			  <dependency>
+				  <groupId>mysql</groupId>
+				  <artifactId>mysql-connector-java</artifactId>
+				  <scope>runtime</scope>
+				  <version>${mysql-connector-java}</version>
+			  </dependency>
+
+
+
+
+			  <dependency>
+				  <groupId>javax.servlet</groupId>
+				  <artifactId>javax.servlet-api</artifactId>
+				  <version>${javax.servlet-api}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>javax.annotation</groupId>
+				  <artifactId>javax.annotation-api</artifactId>
+				  <version>${javax.annotation-api}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.projectlombok</groupId>
+				  <artifactId>lombok</artifactId>
+				  <optional>true</optional>
+				  <version>${lombok}</version>
+			  </dependency>
+
 			  <dependency>
 				  <groupId>com.alibaba</groupId>
 				  <artifactId>fastjson</artifactId>

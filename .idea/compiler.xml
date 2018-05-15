@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="smart-comm" />
         <module name="smart-company" />
+        <module name="smart-customer" />
         <module name="smart-eureka" />
         <module name="smart-quartz" />
         <module name="smart-sso" />
