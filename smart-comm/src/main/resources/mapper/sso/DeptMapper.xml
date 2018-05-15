@@ -10,10 +10,10 @@
 	</select>
 
 	<select id="condition" resultType="com.smart.domain.sys.Dept">
-		select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from
-		sys_dept
+		select `id`,`parent_id`,`name`,`order_num`,`del_flag` from
+		dept
 		<where>
-			<if test="deptId != null and deptId != ''"> and dept_id = #{deptId} </if>
+			<if test="deptId != null and deptId != ''"> and id = #{deptId} </if>
 			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
 			<if test="name != null and name != ''"> and name = #{name} </if>
 			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
@@ -24,12 +24,9 @@
 				order by ${sort} ${order}
 			</when>
 			<otherwise>
-				order by dept_id desc
+				order by id desc
 			</otherwise>
 		</choose>
-		<if test="offset != null and limit != null">
-			limit #{offset}, #{limit}
-		</if>
 	</select>
 
 	<insert id="insert" parameterType="com.smart.domain.sys.Dept"

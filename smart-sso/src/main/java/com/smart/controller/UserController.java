@@ -1,6 +1,7 @@
 package com.smart.controller;
 
 import com.smart.config.PageUtils;
+import com.smart.config.Pagination;
 import com.smart.config.Query;
 import com.smart.core.domin.R;
 import com.smart.domain.sys.Role;
@@ -46,10 +47,10 @@ public class UserController {
     PageUtils list(@RequestParam Map<String, Object> params) {
         // 查询列表数据
 
-        Query<User> query = new Query<User>(params);
+        Pagination<User> query = new Pagination<User>(params);
         List<User> sysUserList = userService.condition(query);
-        //int total =(int)query.getPage().getPageCount();
-        PageUtils pageUtil = new PageUtils(sysUserList, 1);
+        int total =(int)query.getRowCount();
+        PageUtils pageUtil = new PageUtils(sysUserList, total);
         return pageUtil;
     }
 
