@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @Description:
  */
 @RestController
-@RequestMapping("/customer")
 public class CustLoginContorller {
 
 

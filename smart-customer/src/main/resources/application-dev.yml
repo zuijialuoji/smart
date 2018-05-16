@@ -1,13 +1,13 @@
 
 logging:
-  level:  warn
+  level:
     root: info
     com.bootdo: debug
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/smart_sso?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/smart_sso?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: root
     password: root
     initialSize: 1

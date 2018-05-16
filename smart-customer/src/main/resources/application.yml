@@ -3,7 +3,7 @@ server:
 #    tomcat:
 #        max-threads: 1000
 #        min-spare-threads: 30
-  port: 80
+  port: 8082
 #    uri-encoding: utf-8
 security:
   basic:
@@ -30,7 +30,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath*:mapper/customer/*Mapper.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.smart.domain.customer.*
+  typeAliasesPackage: com.smart.domain.customer
   typeEnumsPackage: com.smart.comm.enums
   global-config:
     #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
@@ -51,11 +51,11 @@ mybatis-plus:
     #自定义sql注入器,不在推荐使用此方式进行配置,请使用自定义bean注入
     sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
     #自定义填充策略接口实现,不在推荐使用此方式进行配置,请使用自定义bean注入
-    meta-object-handler: com.baomidou.springboot.MyMetaObjectHandler
+    meta-object-handler: com.smart.MyMetaObjectHandler
     #自定义SQL注入器
     #sql-injector: com.baomidou.springboot.xxx
     # SQL 解析缓存，开启后多租户 @SqlParser 注解生效
-    sql-parser-cache: true
+    sql-parser-cache: false
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false

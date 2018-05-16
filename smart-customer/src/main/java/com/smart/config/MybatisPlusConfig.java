@@ -26,7 +26,7 @@ import java.util.List;
  * @Description:
  */
 @Configuration
-@MapperScan("com.smart.dao.customer.dao*")
+@MapperScan("com.smart.dao.customer.*")
 public class MybatisPlusConfig {
 
     /**
@@ -49,7 +49,7 @@ public class MybatisPlusConfig {
          * 【测试多租户】 SQL 解析处理拦截器<br>
          * 这里固定写成住户 1 实际情况你可以从cookie读取，因此数据看不到 【 麻花藤 】 这条记录（ 注意观察 SQL ）<br>
          */
-        List<ISqlParser> sqlParserList = new ArrayList<>();
+     /*   List<ISqlParser> sqlParserList = new ArrayList<>();
         TenantSqlParser tenantSqlParser = new TenantSqlParser();
         tenantSqlParser.setTenantHandler(new TenantHandler() {
             @Override
@@ -65,17 +65,17 @@ public class MybatisPlusConfig {
             @Override
             public boolean doTableFilter(String tableName) {
                 // 这里可以判断是否过滤表
-                /*
+                *//*
                 if ("user".equals(tableName)) {
                     return true;
-                }*/
+                }*//*
                 return false;
             }
         });
 
 
         sqlParserList.add(tenantSqlParser);
-        paginationInterceptor.setSqlParserList(sqlParserList);
+        paginationInterceptor.setSqlParserList(sqlParserList);*/
         // 以下过滤方式与 @SqlParser(filter = true) 注解等效
 //        paginationInterceptor.setSqlParserFilter(new ISqlParserFilter() {
 //            @Override
