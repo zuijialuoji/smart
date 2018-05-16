@@ -2,25 +2,38 @@ package com.smart.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.plugins.pagination.PageHelper;
+import com.smart.domain.customer.Customer;
 import com.smart.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 崔宗鲁 on 2018/5/11.
  *
  * @Description:
  */
-@RestController
+@Controller
 @RequestMapping("/customer")
 public class CustomerContorller {
 
     @Autowired
     private CustomerService customerService;
 
+
+    private String prefix = "cus/customer";
+
+    @GetMapping()
+    String role() {
+        return prefix + "/customer";
+    }
 
     /**
      * 7、分页 size 一页显示数量  current 当前页码
@@ -29,19 +42,14 @@ public class CustomerContorller {
      */
 
     // 参数模式分页
-    @GetMapping("/page")
-    public Object page(Page page) {
+    @GetMapping("/list")
+    @ResponseBody
+    public  Page<Customer> page(Page page) {
+
         return customerService.selectPage(page);
     }
 
-    // ThreadLocal 模式分页
-    @GetMapping("/pagehelper")
-    public Object pagehelper(Page page) {
-        PageHelper.setPagination(page);
-        page.setRecords(customerService.selectList(null));
-        page.setTotal(PageHelper.freeTotal());//获取总数并释放资源 也可以 PageHelper.getTotal()
-        return page;
-    }
+
 
 
 
