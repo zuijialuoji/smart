@@ -30,6 +30,7 @@
 		<spring-boot-version>2.0.1.RELEASE</spring-boot-version>
 		<spring-beans>5.0.5.RELEASE</spring-beans>
 		<spring-data-jpa>2.0.5.RELEASE</spring-data-jpa>
+		<spring-boot-starter-redis>1.4.7.RELEASE</spring-boot-starter-redis>
 		<swagger2>2.2.2</swagger2>
 		<lombok>1.16.20</lombok>
 		<java.version>1.8</java.version>
@@ -112,7 +113,12 @@
 				  <artifactId>spring-data-jpa</artifactId>
 				  <version>${spring-data-jpa}</version>
 			  </dependency>
-
+	<!--		  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-starter-redis</artifactId>
+				  <version>${spring-boot-starter-redis}</version>
+			  </dependency>
+-->
 
 
 			  <!--————————————————————————————mybatis——————————————————————————————————————-->

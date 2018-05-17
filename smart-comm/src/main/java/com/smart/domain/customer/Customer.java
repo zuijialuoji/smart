@@ -23,12 +23,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@TableName("cus_custormer")
+@TableName("cus_customer")
 public class Customer extends SuperEntity<Customer> {
 
 
     // 用户名
-    private String username;
+    @TableField("customer_name")
+    private String customerName;
     // 用户真实姓名
     private String name;
     // 密码

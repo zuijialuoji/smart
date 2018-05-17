@@ -16,4 +16,8 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl extends ServiceImpl<CustomerDao, Customer> implements CustomerService {
 
 
+    @Override
+    public Customer findBYCustomerName(String customerName) {
+        return baseMapper.findBYCustomerName(customerName);
+    }
 }

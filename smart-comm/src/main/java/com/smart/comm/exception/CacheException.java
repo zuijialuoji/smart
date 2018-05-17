@@ -1,6 +1,7 @@
 package com.smart.comm.exception;
 
-import com.smart.mvc.model.ResultCode;
+
+import com.smart.core.domin.ResultCode;
 
 /**
  * 缓存异常

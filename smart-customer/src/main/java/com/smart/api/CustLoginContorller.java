@@ -1,6 +1,8 @@
 package com.smart.api;
 
+import com.smart.comm.password.MD5Provider;
 import com.smart.core.domin.Result;
+import com.smart.core.domin.ResultCode;
 import com.smart.domain.customer.Customer;
 import com.smart.service.CustomerService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -27,18 +29,23 @@ public class CustLoginContorller {
 
 
 
-    @ApiOperation(value = "客户登录", notes = "客户根据用户名登录")
+    @ApiOperation(value = "客户账号密码登录", notes = "客户根据用户名登录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "customerNmae", value = "用户登录名", required = true, dataType = "String"),
             @ApiImplicitParam(name = "password", value = "客户密码", required = true, dataType = "String")
     })
     @PostMapping("/cus-login")
     public Result CusLogin(String customerNmae ,String password){
-        return Result.createSuccessResult(null, "登录成功！");
+        Customer customer =customerService.findBYCustomerName(customerNmae);
+        if(customer.getPassword().equals(MD5Provider.encrypt(password))){
+            return Result.createSuccessResult(customer, "登录成功！");
+        }
+        return Result.create(ResultCode.ERROR).setMessage("密码错误");
+
     }
 
 
-    @ApiOperation(value = "客户邮箱登录", notes = "客户根据邮箱登录")
+    @ApiOperation(value = "客户邮箱密码登录", notes = "客户根据邮箱登录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "email", value = "用户邮箱", required = true, dataType = "String"),
             @ApiImplicitParam(name = "password", value = "客户密码", required = true, dataType = "String")
@@ -49,7 +56,7 @@ public class CustLoginContorller {
     }
 
 
-    @ApiOperation(value = "客户电话号登录", notes = "客户根据电话号登录")
+    @ApiOperation(value = "客户电话验证码登录", notes = "客户根据电话号登录")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "iphone", value = "用户电话号", required = true, dataType = "String"),
             @ApiImplicitParam(name = "password", value = "客户密码", required = true, dataType = "String")

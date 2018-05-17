@@ -9,4 +9,6 @@ import com.smart.domain.customer.Customer;
  * @Description:
  */
 public interface CustomerService extends IService<Customer> {
+
+    Customer findBYCustomerName(String customerName);
 }
