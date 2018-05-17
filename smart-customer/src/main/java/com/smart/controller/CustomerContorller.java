@@ -45,7 +45,6 @@ public class CustomerContorller {
     @GetMapping("/list")
     @ResponseBody
     public  Page<Customer> page(Page page) {
-
         return customerService.selectPage(page);
     }
 
