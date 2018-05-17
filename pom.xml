@@ -30,6 +30,7 @@
 		<spring-boot-version>2.0.1.RELEASE</spring-boot-version>
 		<spring-beans>5.0.5.RELEASE</spring-beans>
 		<spring-data-jpa>2.0.5.RELEASE</spring-data-jpa>
+		<swagger2>2.2.2</swagger2>
 		<lombok>1.16.20</lombok>
 		<java.version>1.8</java.version>
 		<javax.servlet-api>4.0.0</javax.servlet-api>
@@ -156,8 +157,6 @@
 				  <artifactId>druid</artifactId>
 				  <version>${druid}</version>
 			  </dependency>
-
-
 			  <dependency>
 				  <groupId>mysql</groupId>
 				  <artifactId>mysql-connector-java</artifactId>
@@ -189,7 +188,17 @@
 				  <optional>true</optional>
 				  <version>${lombok}</version>
 			  </dependency>
-
+			  <!---————————————————引入swagger jar包 ————————————————————————————-->
+			  <dependency>
+				  <groupId>io.springfox</groupId>
+				  <artifactId>springfox-swagger2</artifactId>
+				  <version>${swagger2}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>io.springfox</groupId>
+				  <artifactId>springfox-swagger-ui</artifactId>
+				  <version>${swagger2}</version>
+			  </dependency>
 			  <dependency>
 				  <groupId>com.alibaba</groupId>
 				  <artifactId>fastjson</artifactId>
