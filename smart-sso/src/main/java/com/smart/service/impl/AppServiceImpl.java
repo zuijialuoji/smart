@@ -1,7 +1,6 @@
 package com.smart.service.impl;
 
 import com.smart.core.service.Impl.ServiceImpl;
-
 import com.smart.dao.sso.AppDao;
 import com.smart.domain.sys.App;
 import com.smart.service.AppService;

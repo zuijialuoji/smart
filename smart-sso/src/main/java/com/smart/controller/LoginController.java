@@ -4,12 +4,10 @@ import com.smart.domain.sys.Menu;
 import com.smart.service.MenuService;
 import com.smart.utils.Tree;
 import lombok.extern.java.Log;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -37,5 +35,11 @@ public class LoginController {
     @GetMapping("/login")
     String login() {
         return "login";
+    }
+
+
+    @GetMapping("/main")
+    String main() {
+        return "main";
     }
 }
