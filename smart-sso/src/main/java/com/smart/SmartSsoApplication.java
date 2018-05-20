@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 @ServletComponentScan("com.smart.*")
-@MapperScan("com.smart.dao.*.dao")
+@MapperScan("com.smart.dao.sso")
 public class SmartSsoApplication {
 
 	public static void main(String[] args) {

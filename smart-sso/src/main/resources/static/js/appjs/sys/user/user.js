@@ -1,4 +1,4 @@
-var prefix = "/sys/user"
+var prefix = "/user"
 $(function() {
 	var deptId = '';
 	getTreeData();
@@ -186,7 +186,7 @@ function batchRemove() {
 function getTreeData() {
 	$.ajax({
 		type : "GET",
-		url : "/system/sysDept/tree",
+		url : "/dept/tree",
 		success : function(tree) {
 			loadTree(tree);
 		}

@@ -14,4 +14,6 @@ public interface  MenuService  extends Service<Menu, Long> {
      * @return
      */
     List<Tree<Menu>> listMenuTree(Long id);
+    Tree<Menu> getTree();
+    Tree<Menu> getTree(Long id);
 }
