@@ -7,7 +7,9 @@ import com.smart.service.DeptService;
 import com.smart.utils.BuildTree;
 import com.smart.utils.Tree;
 import lombok.extern.java.Log;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,9 +22,10 @@ import java.util.Map;
 @Service
 public class DeptServiceImpl extends ServiceImpl<DeptDao, Dept, Long> implements DeptService {
 
+
     @Autowired
     public void setDao(DeptDao dao) {
-        this.dao = dao;
+        super.dao = dao;
     }
 
     @Override
@@ -35,14 +38,14 @@ public class DeptServiceImpl extends ServiceImpl<DeptDao, Dept, Long> implements
 
     @Override
     public int count(Map<String, Object> map){
-        return dao.count(map);
+        return super.dao.count(map);
     }
 
 
     @Override
     public Tree<Dept> getTree() {
         List<Tree<Dept>> trees = new ArrayList<Tree<Dept>>();
-        List<Dept> sysDepts = dao.condition(new HashMap<String,Object>(16));
+        List<Dept> sysDepts = super.dao.condition(new HashMap<String,Object>(16));
         for (Dept sysDept : sysDepts) {
             Tree<Dept> tree = new Tree<Dept>();
             tree.setId(sysDept.getId().toString());

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smart.domain.customer.CustomerDao">
+
+	<resultMap id="Customer" type="com.smart.domain.customer.Customer" >
+		<result column="id" property="id" />
+		<result column="customer_name" property="customerName" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<result column="dept_id" property="deptId" />
+		<result column="email" property="email" />
+		<result column="mobile" property="mobile" />
+		<result column="status" property="status" />
+		<result column="user_id_create" property="userIdCreate" />
+		<result column="gmt_create" property="gmtCreate" />
+		<result column="gmt_modified" property="gmtModified" />
+		<result column="sex" property="sex" />
+		<result column="birth" property="birth" />
+		<result column="pic_id" property="picId" />
+		<result column="live_address" property="liveAddress" />
+		<result column="hobby" property="hobby" />
+		<result column="province" property="province" />
+		<result column="city" property="city" />
+		<result column="district" property="district" />
+		<result column="tenant_id" property="tenantId" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		`id`,
+		`customer_name`,
+		`name`,
+		`password`,
+		`dept_id`,
+		`email`,
+		`mobile`,
+		`status`,
+		`user_id_create`,
+		`gmt_create`,
+		`gmt_modified`,
+		`sex`,
+		`birth`,
+		`pic_id`,
+		`live_address`,
+		`hobby`,
+		`province`,
+		`city`,
+		`district`,
+		`tenant_id`
+	</sql>
+
+	<insert id="insert" parameterType="com.smart.domain.customer.Customer" >
+		INSERT INTO cus_customer (
+		`id`,
+		`customer_name`,
+		`name`,
+		`password`,
+		`dept_id`,
+		`email`,
+		`mobile`,
+		`status`,
+		`user_id_create`,
+		`gmt_create`,
+		`gmt_modified`,
+		`sex`,
+		`birth`,
+		`pic_id`,
+		`live_address`,
+		`hobby`,
+		`province`,
+		`city`,
+		`district`,
+		`tenant_id`
+		)
+		VALUES(
+		#{Customer.id},
+		#{Customer.customerName},
+		#{Customer.name},
+		#{Customer.password},
+		#{Customer.deptId},
+		#{Customer.email},
+		#{Customer.mobile},
+		#{Customer.status},
+		#{Customer.userIdCreate},
+		#{Customer.gmtCreate},
+		#{Customer.gmtModified},
+		#{Customer.sex},
+		#{Customer.birth},
+		#{Customer.picId},
+		#{Customer.liveAddress},
+		#{Customer.hobby},
+		#{Customer.province},
+		#{Customer.city},
+		#{Customer.district},
+		#{Customer.tenantId}
+		)
+	</insert>
+
+	<delete id="delete" parameterType="java.util.Map" >
+		DELETE FROM cus_customer
+		WHERE `id` = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.smart.domain.customer.Customer" >
+		UPDATE cus_customer
+		SET
+		id = #{Customer.id},
+		customer_name = #{Customer.customerName},
+		name = #{Customer.name},
+		password = #{Customer.password},
+		dept_id = #{Customer.deptId},
+		email = #{Customer.email},
+		mobile = #{Customer.mobile},
+		status = #{Customer.status},
+		user_id_create = #{Customer.userIdCreate},
+		gmt_create = #{Customer.gmtCreate},
+		gmt_modified = #{Customer.gmtModified},
+		sex = #{Customer.sex},
+		birth = #{Customer.birth},
+		pic_id = #{Customer.picId},
+		live_address = #{Customer.liveAddress},
+		hobby = #{Customer.hobby},
+		province = #{Customer.province},
+		city = #{Customer.city},
+		district = #{Customer.district},
+		tenant_id = #{Customer.tenantId},
+		UpdateTime = NOW()
+		WHERE `id` = #{Customer.id}
+	</update>
+
+
+	<select id="load" parameterType="java.lang.String" resultMap="Customer">
+		SELECT <include refid="Base_Column_List" />
+		FROM cus_customer
+		WHERE `id` = #{id}
+	</select>
+
+	<select id="pageList" parameterType="java.util.Map" resultMap="Customer">
+		SELECT <include refid="Base_Column_List" />
+		FROM cus_customer
+		LIMIT #{offset}, #{pagesize}
+	</select>
+
+	<select id="pageListCount" parameterType="java.util.Map" resultType="int">
+		SELECT count(1)
+		FROM cus_customer
+	</select>
+
+</mapper>
