@@ -96,9 +96,7 @@ public class UserController {
     @PostMapping("/update")
     @ResponseBody
     R update(User user) {
- /*       if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }*/
+
         if (userService.update(user) > 0) {
             return R.ok();
         }
@@ -120,13 +118,10 @@ public class UserController {
         return R.error();
     }*/
 
-  /*
+
     @PostMapping("/remove")
     @ResponseBody
     R remove(Long id) {
-    *//*    if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
-        }*//*
         if (userService.remove(id) > 0) {
             return R.ok();
         }
@@ -134,7 +129,7 @@ public class UserController {
     }
 
 
-
+  /*
     @PostMapping("/batchRemove")
     @ResponseBody
     R batchRemove(@RequestParam("ids[]") Long[] userIds) {
@@ -147,7 +142,7 @@ public class UserController {
         }
         return R.error();
     }
-
+*/
     @PostMapping("/exit")
     @ResponseBody
     boolean exit(@RequestParam Map<String, Object> params) {
@@ -157,7 +152,7 @@ public class UserController {
 
 
 
-*/
+
 
 
 

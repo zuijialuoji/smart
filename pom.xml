@@ -19,19 +19,26 @@
 	<modules>
 		<module>smart-comm</module>
 		<module>smart-sso</module>
-		<module>smart-eureka</module>
         <module>smart-quartz</module>
         <module>samrt-customer</module>
-    </modules>
+		<module>smart-eureka</module>
+
+	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<mybatis-spring-boot-starter>1.3.2</mybatis-spring-boot-starter>
 		<spring-boot-version>2.0.1.RELEASE</spring-boot-version>
+		<spring-cloud.version>Finchley.BUILD-SNAPSHOT</spring-cloud.version>
+		<spring-cloud-starter-config>1.2.2.RELEASE</spring-cloud-starter-config>
+		<org.springframework.cloud>1.4.4.RELEASE</org.springframework.cloud>
+		<spring-cloud-starter-eureka-server>1.4.3.RELEASE</spring-cloud-starter-eureka-server>
+		<spring-boot-dubbo>1.0.7</spring-boot-dubbo>
 		<swagger2>2.2.2</swagger2>
 		<mysql-connector-java>6.0.6</mysql-connector-java>
 		<lombok>1.16.20</lombok>
+		<java.version>1.8</java.version>
 		<javax.servlet-api>4.0.0</javax.servlet-api>
 		<javax.annotation-api>1.2</javax.annotation-api>
 		<spring-beans>5.0.5.RELEASE</spring-beans>
@@ -43,6 +50,20 @@
     <dependencyManagement>
 
 		  <dependencies>
+
+			  <!--—————————————————————————spring-boot—————————————————————————————-->
+			  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-dependencies</artifactId>
+				  <version>${spring-boot-version}</version>
+				  <type>pom</type>
+				  <scope>import</scope>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-starter</artifactId>
+				  <version>${spring-boot-version}</version>
+			  </dependency>
 			  <dependency>
 				  <groupId>org.springframework.boot</groupId>
 				  <artifactId>spring-boot-starter-amqp</artifactId>
@@ -95,10 +116,44 @@
 				  <version>${spring-boot-version}</version>
 			  </dependency>
 			  <dependency>
+				  <groupId>org.springframework.boot</groupId>
+				  <artifactId>spring-boot-starter-test</artifactId>
+				  <scope>test</scope>
+				  <version>${spring-boot-version}</version>
+			  </dependency>
+			  <dependency>
 				  <groupId>org.springframework</groupId>
 				  <artifactId>spring-beans</artifactId>
 				  <version>${spring-beans}</version>
 			  </dependency>
+
+             <!--————————————————————————————mybatis——————————————————————————————-->
+
+			  <dependency>
+				  <groupId>org.mybatis.spring.boot</groupId>
+				  <artifactId>mybatis-spring-boot-starter</artifactId>
+				  <version>${mybatis-spring-boot-starter}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.mybatis</groupId>
+				  <artifactId>mybatis</artifactId>
+				  <version>${mybatis}</version>
+			  </dependency>
+
+
+			  <!--————————————————————————————数据连接——————————————————————————————————-->
+			  <dependency>
+				  <groupId>mysql</groupId>
+				  <artifactId>mysql-connector-java</artifactId>
+				  <scope>runtime</scope>
+				  <version>${mysql-connector-java}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>com.alibaba</groupId>
+				  <artifactId>druid</artifactId>
+				  <version>${druid}</version>
+			  </dependency>
+			  <!--——————————————————————————javax————————————————————————————————-->
 			  <dependency>
 				  <groupId>javax.servlet</groupId>
 				  <artifactId>javax.servlet-api</artifactId>
@@ -111,32 +166,13 @@
 			  </dependency>
 
 			  <dependency>
-				  <groupId>mysql</groupId>
-				  <artifactId>mysql-connector-java</artifactId>
-				  <scope>runtime</scope>
-				  <version>${mysql-connector-java}</version>
-			  </dependency>
-			  <dependency>
 				  <groupId>org.projectlombok</groupId>
 				  <artifactId>lombok</artifactId>
 				  <optional>true</optional>
 				  <version>${lombok}</version>
 			  </dependency>
-		  <dependency>
-			  <groupId>org.mybatis.spring.boot</groupId>
-			  <artifactId>mybatis-spring-boot-starter</artifactId>
-			  <version>${mybatis-spring-boot-starter}</version>
-		  </dependency>
-			  <dependency>
-				  <groupId>org.mybatis</groupId>
-				  <artifactId>mybatis</artifactId>
-				  <version>${mybatis}</version>
-			  </dependency>
-			  <dependency>
-				  <groupId>com.alibaba</groupId>
-				  <artifactId>druid</artifactId>
-				  <version>${druid}</version>
-			  </dependency>
+
+
 			  <dependency>
 				  <groupId>io.springfox</groupId>
 				  <artifactId>springfox-swagger2</artifactId>
@@ -152,8 +188,40 @@
 				  <artifactId>fastjson</artifactId>
 				  <version>${fastjson}</version>
 			  </dependency>
-	  </dependencies>
+			  <!--——————————————————————————————————spring-cloud-eureka—————————————————— -->
 
+			  <dependency>
+				  <groupId>org.springframework.cloud</groupId>
+				  <artifactId>spring-cloud-starter-config</artifactId>
+				  <version>${spring-cloud-starter-config}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.springframework.cloud</groupId>
+				  <artifactId>spring-cloud-starter-eureka-server</artifactId>
+				  <version>${spring-cloud-starter-eureka-server}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.springframework.cloud</groupId>
+				  <artifactId>spring-cloud-starter-eureka</artifactId>
+				  <version>${org.springframework.cloud}</version>
+			  </dependency>
+			  <dependency>
+				  <groupId>org.springframework.cloud</groupId>
+				  <artifactId>spring-cloud-dependencies</artifactId>
+				  <version>Brixton.SR5</version>
+				  <type>pom</type>
+				  <scope>import</scope>
+			  </dependency>
+
+
+			  <!--————————————————————————————————————— Spring Boot Dubbo ———————————————————————-->
+
+			  <dependency>
+				  <groupId>io.dubbo.springboot</groupId>
+				  <artifactId>spring-boot-starter-dubbo</artifactId>
+				  <version>${spring-boot-dubbo}</version>
+			  </dependency>
+	  </dependencies>
 	</dependencyManagement>
 
 	<build>
@@ -161,8 +229,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>

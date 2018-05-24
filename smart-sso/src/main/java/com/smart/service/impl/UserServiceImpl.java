@@ -28,4 +28,12 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User, Long> implements
     public int updatePersonal(User user) {
         return 0;
     }
+
+
+    public boolean exit(Map<String, Object> params) {
+        boolean exit;
+        exit = dao.condition(params).size() > 0;
+        return exit;
+    }
+
 }

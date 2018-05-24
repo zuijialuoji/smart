@@ -5,11 +5,11 @@
 
 	<select id="get" resultType="com.smart.domain.sys.RoleMenu">
 		select `id`,`role_id`,`menu_id` from
-		sys_role_menu where id = #{value}
+		 role_menu where id = #{value}
 	</select>
 
 	<select id="condition" resultType="com.smart.domain.sys.RoleMenu">
-		select `id`,`role_id`,`menu_id` from sys_role_menu
+		select `id`,`role_id`,`menu_id` from  role_menu
 		<where>
 			<if test="id != null and id != ''"> and id = #{id} </if>
 			<if test="roleId != null and roleId != ''"> and role_id = #{roleId} </if>
@@ -31,7 +31,7 @@
 
 	<insert id="save" parameterType="com.smart.domain.sys.RoleMenu"
 		useGeneratedKeys="true" keyProperty="id">
-		insert into sys_role_menu
+		insert into  role_menu
 		(
 		`role_id`,
 		`menu_id`
@@ -44,7 +44,7 @@
 	</insert>
 
 	<update id="update" parameterType="com.smart.domain.sys.RoleMenu">
-		update sys_role_menu
+		update  role_menu
 		<set>
 			<if test="roleId != null">`role_id` = #{roleId}, </if>
 			<if test="menuId != null">`menu_id` = #{menuId}</if>
@@ -53,11 +53,11 @@
 	</update>
 
 	<delete id="remove">
-		delete from sys_role_menu where id = #{value}
+		delete from  role_menu where id = #{value}
 	</delete>
 
 	<delete id="batchRemove">
-		delete from sys_role_menu where id in
+		delete from  role_menu where id in
 		<foreach item="id" collection="array" open="(" separator=","
 			close=")">
 			#{id}
@@ -65,20 +65,20 @@
 	</delete>
 
 	<select id="listMenuIdByRoleId" resultType="long">
-		select menu_id from sys_role_menu
+		select menu_id from  role_menu
 		<where>role_id = #{roleId}</where>
 	</select>
 
 	<delete id="removeByRoleId">
-		DELETE FROM sys_role_menu WHERE role_id=#{roleId}
+		DELETE FROM  role_menu WHERE role_id=#{roleId}
 	</delete>
 
 	<delete id="removeByMenuId">
-		DELETE FROM sys_role_menu WHERE menu_id=#{menuId}
+		DELETE FROM  role_menu WHERE menu_id=#{menuId}
 	</delete>
 
 	<insert id="batchSave">
-		INSERT INTO sys_role_menu(role_id, menu_id) values
+		INSERT INTO  role_menu(role_id, menu_id) values
 		<foreach item="item" index="index" collection="list"
 			separator=",">
 			(#{item.roleId},#{item.menuId})

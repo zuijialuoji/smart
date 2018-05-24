@@ -34,9 +34,10 @@
 
 
 	<insert id="insert" parameterType="com.smart.domain.sys.Role"
-		useGeneratedKeys="true" keyProperty="roleId">
+		useGeneratedKeys="true" keyProperty="id">
 		insert into role
 		(
+
 		`role_name`,
 		`role_sign`,
 		`remark`,

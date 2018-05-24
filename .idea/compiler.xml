@@ -23,6 +23,7 @@
       <module name="smart-eureka" target="1.8" />
       <module name="smart-quartz" target="1.8" />
       <module name="smart-sso" target="1.8" />
+      <module name="smart-zookeeper" target="1.8" />
       <module name="smartcustomer" target="1.8" />
     </bytecodeTargetLevel>
   </component>

@@ -4,11 +4,10 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/samrt-customer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/smart-comm" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/smart-company" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/smart-customer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/smart-eureka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/smart-quartz" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/smart-sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/smart-zookeeper" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
