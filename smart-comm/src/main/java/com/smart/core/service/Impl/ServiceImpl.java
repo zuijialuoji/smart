@@ -56,5 +56,15 @@ public  class ServiceImpl<DAO extends Dao<T, ID>, T extends PersistentObject, ID
         return dao.condition(map);
     }
 
+    @Override
+    public List<T> list(Map<String, Object> map) {
+        return  dao.list(map);
+    }
+
+    @Override
+    public int count(Map<String, Object> map) {
+        return dao.count(map);
+    }
+
 
 }

@@ -50,9 +50,9 @@ public class DeptController {
         return  prefix + "/add";
     }
 
-    @GetMapping("/edit/{deptId}")
-    String edit(@PathVariable("deptId") Long deptId, Model model) {
-        Dept sysDept = deptService.get(deptId);
+    @GetMapping("/edit/{id}")
+    String edit(@PathVariable("id") Long id, Model model) {
+        Dept sysDept = deptService.get(id);
         model.addAttribute("sysDept", sysDept);
         if(Constant.DEPT_ROOT_ID.equals(sysDept.getParentId())) {
             model.addAttribute("parentDeptName", "无");
@@ -77,6 +77,8 @@ public class DeptController {
         }
         return R.error();
     }
+
+
     /**
      * 修改
      */
@@ -96,17 +98,17 @@ public class DeptController {
      */
     @PostMapping("/remove")
     @ResponseBody
-    public R remove(Long deptId) {
+    public R remove(Long id) {
   /*      if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
             return R.error(1, "演示系统不允许修改,完整体验请部署程序");
         }*/
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("parentId", deptId);
+        map.put("parentId", id);
         if(deptService.count(map)>0) {
             return R.error(1, "包含下级部门,不允许修改");
         }
-        if(deptService.checkDeptHasUser(deptId)) {
-            if (deptService.remove(deptId) > 0) {
+        if(deptService.checkDeptHasUser(id)) {
+            if (deptService.remove(id) > 0) {
                 return R.ok();
             }
         }else {
