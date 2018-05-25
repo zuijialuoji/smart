@@ -5,9 +5,11 @@
       <module fileurl="file://$PROJECT_DIR$/samrt-customer/samrt-customer.iml" filepath="$PROJECT_DIR$/samrt-customer/samrt-customer.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart.iml" filepath="$PROJECT_DIR$/smart.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-comm/smart-comm.iml" filepath="$PROJECT_DIR$/smart-comm/smart-comm.iml" />
+      <module fileurl="file://E:\git-master\smart\smart-comm\smart-comm.iml" filepath="E:\git-master\smart\smart-comm\smart-comm.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-eureka/smart-eureka.iml" filepath="$PROJECT_DIR$/smart-eureka/smart-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-quartz/smart-quartz.iml" filepath="$PROJECT_DIR$/smart-quartz/smart-quartz.iml" />
       <module fileurl="file://$PROJECT_DIR$/smart-sso/smart-sso.iml" filepath="$PROJECT_DIR$/smart-sso/smart-sso.iml" />
+      <module fileurl="file://E:\git-master\smart\smart-sso\smart-sso.iml" filepath="E:\git-master\smart\smart-sso\smart-sso.iml" />
     </modules>
   </component>
 </project>

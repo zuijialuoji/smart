@@ -58,7 +58,7 @@
 	</select>
 
 	<insert id="insert" parameterType="com.smart.domain.sys.Menu"
-		useGeneratedKeys="true" keyProperty="menuId">
+		useGeneratedKeys="true" keyProperty="id">
 		insert into menu
 		(
 		`parent_id`,
@@ -98,7 +98,7 @@
 			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
 			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
 		</set>
-		where id = #{Id}
+		where id = #{id}
 	</update>
 
 	<delete id="remove">

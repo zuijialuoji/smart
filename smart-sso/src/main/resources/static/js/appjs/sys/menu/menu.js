@@ -6,8 +6,8 @@ var load = function () {
     $('#exampleTable')
         .bootstrapTreeTable(
             {
-                id: 'menuId',
-                code: 'menuId',
+                id: 'id',
+                code: 'id',
                 parentCode: 'parentId',
                 type: "GET", // 请求数据的ajax类型
                 url: prefix + '/list', // 请求数据的ajax的url
@@ -20,7 +20,7 @@ var load = function () {
                 columns: [
                     {
                         title: '编号',
-                        field: 'menuId',
+                        field: 'id',
                         visible: false,
                         align: 'center',
                         valign: 'center',
@@ -84,17 +84,17 @@ var load = function () {
                             var e = '<a class="btn btn-primary btn-sm '
                                 + s_edit_h
                                 + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
-                                + item.menuId
+                                + item.id
                                 + '\')"><i class="fa fa-edit"></i></a> ';
                             var p = '<a class="btn btn-primary btn-sm '
                                 + s_add_h
                                 + '" href="#" mce_href="#" title="添加下级" onclick="add(\''
-                                + item.menuId
+                                + item.id
                                 + '\')"><i class="fa fa-plus"></i></a> ';
                             var d = '<a class="btn btn-warning btn-sm '
                                 + s_remove_h
                                 + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
-                                + item.menuId
+                                + item.id
                                 + '\')"><i class="fa fa-remove"></i></a> ';
                             return e + d + p;
                         }
