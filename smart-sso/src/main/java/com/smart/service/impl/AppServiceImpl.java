@@ -20,30 +20,5 @@ public class AppServiceImpl extends ServiceImpl<AppDao, App, Long> implements Ap
         this.dao = dao;
     }
 
-    @Override
-    public App get(Long pk) {
-        return null;
-    }
 
-    @Override
-    public int save(App app) {
-        return 0;
-    }
-
-    @Override
-    public int update(App app) {
-        return 0;
-    }
-
-    @Override
-    public List<App> condition(Map map) {
-        return null;
-    }
-
-
-
-
-    public void deleteById(Integer integer) {
-
-    }
 }

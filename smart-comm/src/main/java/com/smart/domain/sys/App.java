@@ -19,15 +19,24 @@ import java.util.Date;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
 public class App extends PersistentObject {
-    /** 名称 */
-    private String name;
-    /** 编码  */
+    /**
+     * 服务编号
+     */
     private String code;
-    /** 排序 */
-    private Integer sort = Integer.valueOf(1);
-    /** 创建时间 */
 
-    private Date createTime;
-    /** 是否启用 */
-    private Boolean isEnable = Boolean.valueOf(true);
+    /**
+     * 应用名称
+     */
+    private String name;
+
+    /**
+     * 排序
+     */
+    private Integer orderNum;
+
+    /**
+     * 是否删除  -1：已删除  0：正常
+     */
+    private Integer delFlag;
+
 }

@@ -12,11 +12,5 @@ import java.util.Set;
 @Mapper
 @Repository
 public interface AppDao extends Dao<App, Long> {
-    int enable(@Param("isEnable") Boolean isEnable, @Param("idList") List<Integer> idList);
 
-     App findByCode(@Param("code") String code);
-
-     List<App> findByUserId(@Param("isEnable") Boolean isEnable, @Param("userId") Integer userId);
-
-     Set<String> findAppCodeByUserId(@Param("isEnable") Boolean isEnable, @Param("userId") Integer userId);
 }
