@@ -20,5 +20,6 @@ import javax.persistence.Entity;
 public class UserRole  extends PersistentObject {
     private Long userId;
     private Long roleId;
+    private String appCode;
 
 }

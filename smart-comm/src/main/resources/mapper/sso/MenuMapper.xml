@@ -14,6 +14,8 @@
 		<result column="order_num" property="orderNum" />
 		<result column="gmt_create" property="gmtCreate" />
 		<result column="gmt_modified" property="gmtModified" />
+		<result column="function_id" property="functionId" />
+		<result column="hide" property="hide" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
@@ -26,7 +28,9 @@
 		`icon`,
 		`order_num`,
 		`gmt_create`,
-		`gmt_modified`
+		`gmt_modified`,
+		`function_id`,
+		`hide`
 	</sql>
 	<select id="get" resultType="com.smart.domain.sys.Menu">
 		select *
@@ -35,7 +39,7 @@
 
 	<select id="condition" parameterType="java.util.HashMap" resultType="com.smart.domain.sys.Menu">
 		select
-		`id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`
+		`id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`,`order_num`,`gmt_create`,`gmt_modified`,`function_id`,`hide`
 		from menu
 		     WHERE 1 = 1
 			<if test="parentId != null and parentId != ''"> and parent_id = #{parentId} </if>
@@ -47,6 +51,7 @@
 			<if test="orderNum != null and orderNum != ''"> and order_num = #{orderNum} </if>
 			<if test="gmtCreate != null and gmtCreate != ''"> and gmt_create = #{gmtCreate} </if>
 			<if test="gmtModified != null and gmtModified != ''"> and gmt_modified = #{gmtModified} </if>
+		   <if test="functionId != null and functionId != ''"> and function_id = #{functionId} </if>
 		<choose>
 			<when test="sort != null and sort.trim() != ''">
 				order by ${sort} ${order}
@@ -69,7 +74,9 @@
 		`icon`,
 		`order_num`,
 		`gmt_create`,
-		`gmt_modified`
+		`gmt_modified`,
+		`function_id`,
+		`hide`
 		)
 		values
 		(
@@ -81,7 +88,9 @@
 		#{icon},
 		#{orderNum},
 		#{gmtCreate},
-		#{gmtModified}
+		#{gmtModified},
+		#{functionId},
+		#{hide}
 		)
 	</insert>
 
@@ -97,6 +106,8 @@
 			<if test="orderNum != null">`order_num` = #{orderNum}, </if>
 			<if test="gmtCreate != null">`gmt_create` = #{gmtCreate}, </if>
 			<if test="gmtModified != null">`gmt_modified` = #{gmtModified}</if>
+			<if test="functionId != null">`function_id` = #{functionId}</if>
+			<if test="hide != null">`hide` = #{hide}</if>
 		</set>
 		where id = #{id}
 	</update>

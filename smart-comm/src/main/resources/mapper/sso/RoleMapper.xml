@@ -6,7 +6,7 @@
 	<select id="get" resultType="com.smart.domain.sys.Role">
 		select
 		`id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified`
-		from role where role_id = #{value}
+		from role where id = #{value}
 	</select>
 
 	<select id="condition" resultType="com.smart.domain.sys.Role">

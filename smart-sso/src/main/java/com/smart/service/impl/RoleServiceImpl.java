@@ -42,4 +42,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleDao, Role, Long> implements
         }
         return roles;
     }
+
+    @Override
+    public List<Long> getRoleMenu(Long roleId) {
+        return null;
+    }
 }

@@ -1,15 +1,14 @@
 bootdo:
-  uploadPath: D:/var/uploaded_files/
+  uploadPath: /var/uploaded_files/
 logging:
   level:
-    root: info
-    com.bootdo: debug
-
+    root: error
+    com.bootdo: info
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/smart_customer?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/bootdo?useUnicode=true&characterEncoding=utf8
     username: root
     password: root
     initialSize: 1

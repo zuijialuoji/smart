@@ -27,8 +27,19 @@
 			limit #{offset}, #{limit}
 		</if>
 	</select>
+<!--	<select id="roleUrl" resultType="String">
+		SELECT m.url FROM role_menu rm JOIN menu m ON rm.role_id=#{roleId} AND rm.menu_id=m.id AND m.type IN (1,2)
+	</select>-->
 
-
+<!--	<select id="selectPage" resultType="String">
+		SELECT m.url FROM role_menu rm JOIN menu m ON rm.role_id=#{roleId} AND rm.menu_id=m.id AND m.type IN (1)
+	</select>-->
+<!--	<select id="selectBotton" resultType="String">
+		SELECT m.url FROM role_menu rm JOIN menu m ON rm.role_id=#{roleId} AND rm.menu_id=m.id AND m.type IN (2) AND m.function_id =#{functionId} AND m.hide =0
+	</select>-->
+  <!--  <select id="getRoleMen">
+		SELECT m.id FROM role_menu  rm JOIN menu m ON rm.menu_id = m.id AND m.hide =0 AND rm.role_id =#{roleId}
+	</select>-->
 	<insert id="save" parameterType="com.smart.domain.sys.RoleMenu"
 		useGeneratedKeys="true" keyProperty="id">
 		insert into  role_menu

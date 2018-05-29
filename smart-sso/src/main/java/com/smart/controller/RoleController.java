@@ -47,8 +47,10 @@ public class RoleController {
 
     @GetMapping("/edit/{id}")
     String edit(@PathVariable("id") Long id, Model model) {
-        Role Role = roleService.get(id);
-        model.addAttribute("role", Role);
+        Role role = roleService.get(id);
+        List<Long> menus = roleService.getRoleMenu(id);
+        role.setMenuIds(menus);
+        model.addAttribute("role", role);
         return prefix + "/edit";
     }
 

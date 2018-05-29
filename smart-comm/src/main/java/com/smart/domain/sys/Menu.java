@@ -28,6 +28,10 @@ public class Menu extends PersistentObject {
     private String perms;
     // 类型 0：目录 1：菜单 2：按钮
     private Integer type;
+    /**
+     * 功能
+     */
+    private String  functionId;
     // 菜单图标
     private String icon;
     // 排序
@@ -36,4 +40,6 @@ public class Menu extends PersistentObject {
     private Date gmtCreate;
     // 修改时间
     private Date gmtModified;
+    //是否是隐藏按钮 0否，1隐藏
+    private Integer hide;
 }
